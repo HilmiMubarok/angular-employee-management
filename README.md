@@ -1,7 +1,30 @@
-# EmployeeManagement
+# Employee Management System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+This is an Angular-based Employee Management System application.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Prerequisites
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+- Angular CLI (v16.2.16)
+
+### Installation
+
+1. Clone the repository
+   ```
+   git clone git@github.com:HilmiMubarok/angular-employee-management.git
+   cd employee-management
+   ```
+
+2. Install dependencies
+   ```
+   npm install
+   ```
+
+3. Run the development server
+   ```
+   ng serve
+   ```
+
+4. Navigate to `http://localhost:4200/` in your browser. The application will automatically reload if you change any of the source files.
