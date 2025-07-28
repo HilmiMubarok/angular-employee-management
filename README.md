@@ -14,7 +14,7 @@ This is an Angular-based Employee Management System application.
 1. Clone the repository
    ```
    git clone git@github.com:HilmiMubarok/angular-employee-management.git
-   cd employee-management
+   cd angular-employee-management
    ```
 
 2. Install dependencies
