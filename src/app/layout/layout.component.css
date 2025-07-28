@@ -1,0 +1,25 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.layout-content {
+  flex: 1;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.active-link {
+  background-color: rgba(255, 255, 255, 0.15);
+}

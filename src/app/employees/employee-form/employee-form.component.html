@@ -1,0 +1,105 @@
+<div class="employee-form-container">
+  <div class="employee-form-header">
+    <button mat-icon-button (click)="navigateToList()" aria-label="Back to list" matTooltip="Back to list">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>{{ isEditMode ? 'Edit Employee' : 'Add New Employee' }}</h1>
+  </div>
+
+  <div class="spinner-container" *ngIf="isLoading">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+  <ng-container *ngIf="!isLoading">
+    <mat-card class="form-card">
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <mat-card-content>
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Username</mat-label>
+              <input matInput formControlName="username" placeholder="Enter username">
+              <mat-error *ngIf="usernameControl?.errors?.['required']">Username is required</mat-error>
+              <mat-error *ngIf="usernameControl?.errors?.['minlength']">Username must be at least 3 characters</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" placeholder="Enter email" type="email">
+              <mat-error *ngIf="emailControl?.errors?.['required']">Email is required</mat-error>
+              <mat-error *ngIf="emailControl?.errors?.['email']">Please enter a valid email address</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" placeholder="Enter first name">
+              <mat-error *ngIf="firstNameControl?.errors?.['required']">First name is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" placeholder="Enter last name">
+              <mat-error *ngIf="lastNameControl?.errors?.['required']">Last name is required</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Birth Date</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="birthDate" [max]="maxDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="birthDateControl?.errors?.['required']">Birth date is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Basic Salary</mat-label>
+              <input matInput formControlName="basicSalary" placeholder="Enter basic salary" type="number">
+              <mat-error *ngIf="basicSalaryControl?.errors?.['required']">Basic salary is required</mat-error>
+              <mat-error *ngIf="basicSalaryControl?.errors?.['min']">Basic salary must be greater than or equal to 0</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Group</mat-label>
+              <input type="text" matInput formControlName="group" [matAutocomplete]="auto" placeholder="Search for a group">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let group of filteredGroupOptions | async" [value]="group">
+                  {{ group }}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="groupControl?.errors?.['required']">Group is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Status</mat-label>
+              <mat-select formControlName="status">
+                <mat-option *ngFor="let status of statusOptions" [value]="status">
+                  {{ status }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="statusControl?.errors?.['required']">Status is required</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row full-width">
+            <mat-form-field appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea matInput formControlName="description" placeholder="Enter description" rows="4"></textarea>
+              <mat-error *ngIf="descriptionControl?.errors?.['required']">Description is required</mat-error>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+          <button mat-button type="button" (click)="navigateToList()" [disabled]="isSubmitting">Cancel</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="isSubmitting">
+            <mat-spinner diameter="20" *ngIf="isSubmitting" class="spinner-button"></mat-spinner>
+            {{ isEditMode ? 'Update' : 'Save' }}
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </ng-container>
+</div>

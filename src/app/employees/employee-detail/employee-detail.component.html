@@ -1,0 +1,80 @@
+<div class="employee-detail-container">
+  <div class="employee-detail-header">
+    <button mat-icon-button (click)="navigateToList()" aria-label="Back to list" matTooltip="Back to list">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Employee Details</h1>
+    <div class="header-actions">
+      <button mat-raised-button color="accent" (click)="editEmployee()">
+        <mat-icon>edit</mat-icon> Edit
+      </button>
+      <button mat-raised-button color="warn" (click)="deleteEmployee()">
+        <mat-icon>delete</mat-icon> Delete
+      </button>
+    </div>
+  </div>
+
+  <div class="spinner-container" *ngIf="isLoading">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+  <ng-container *ngIf="!isLoading && employee">
+    <mat-card class="employee-card">
+      <mat-card-header>
+        <div mat-card-avatar class="employee-avatar">
+          <mat-icon>person</mat-icon>
+        </div>
+        <mat-card-title>{{ employee.firstName }} {{ employee.lastName }}</mat-card-title>
+        <mat-card-subtitle>{{ employee.username }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="detail-section">
+          <h2>Personal Information</h2>
+          <div class="detail-grid">
+            <div class="detail-item">
+              <span class="label">Email:</span>
+              <span class="value">{{ employee.email }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Birth Date:</span>
+              <span class="value">{{ employee.birthDate | date:'mediumDate' }}</span>
+            </div>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="detail-section">
+          <h2>Employment Information</h2>
+          <div class="detail-grid">
+            <div class="detail-item">
+              <span class="label">Employee ID:</span>
+              <span class="value">{{ employee.id }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Group:</span>
+              <span class="value">{{ employee.group }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Status:</span>
+              <span class="value status-badge" [ngClass]="{'active': employee.status === 'Active', 'inactive': employee.status === 'Inactive'}">
+                {{ employee.status }}
+              </span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Basic Salary:</span>
+              <span class="value">{{ employee.basicSalary | currency:'Rp. '}}</span>
+            </div>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="detail-section">
+          <h2>Description</h2>
+          <p class="description">{{ employee.description || 'No description available.' }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+</div>

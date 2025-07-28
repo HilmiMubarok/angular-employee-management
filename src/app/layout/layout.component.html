@@ -1,0 +1,24 @@
+<div class="layout-container">
+  <mat-toolbar color="primary" class="layout-header">
+    <span>Employee Management System</span>
+    <span class="spacer"></span>
+    
+    <button mat-button routerLink="/dashboard" routerLinkActive="active-link">
+      <mat-icon>dashboard</mat-icon>
+      Dashboard
+    </button>
+    
+    <button mat-button routerLink="/employees" routerLinkActive="active-link">
+      <mat-icon>people</mat-icon>
+      Employees
+    </button>
+    
+    <button mat-icon-button (click)="logout()" aria-label="Logout" matTooltip="Logout">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="layout-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

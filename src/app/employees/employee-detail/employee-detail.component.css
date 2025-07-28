@@ -1,0 +1,117 @@
+.employee-detail-container {
+  padding: 20px;
+}
+
+.employee-detail-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.employee-detail-header h1 {
+  margin: 0 16px;
+  color: #3f51b5;
+  font-size: 24px;
+  flex: 1;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.employee-card {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.employee-avatar {
+  background-color: #3f51b5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.employee-avatar mat-icon {
+  color: white;
+}
+
+.detail-section {
+  margin: 24px 0;
+}
+
+.detail-section h2 {
+  color: #3f51b5;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.label {
+  font-weight: 500;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.value {
+  font-size: 16px;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.status-badge.active {
+  background-color: #e6f7ed;
+  color: #00a854;
+}
+
+.status-badge.inactive {
+  background-color: #fff1f0;
+  color: #f5222d;
+}
+
+.description {
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .employee-detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
